@@ -138,8 +138,6 @@ class CacheableRequest {
 					}
 				});
 
-			this.cache.on('error', err => ee.emit('error', new CacheableRequest.CacheError(err)));
-
 			get(opts).catch(err => {
 				if (opts.automaticFailover && !madeRequest) {
 					makeRequest(opts);
