@@ -106,6 +106,8 @@ class CacheableRequest {
 				};
 
 				try {
+					// signal that we are about to make a real request
+					ee.emit('prerequest', opts);
 					const req = request(opts, handler);
 					ee.emit('request', req);
 				} catch (err) {
